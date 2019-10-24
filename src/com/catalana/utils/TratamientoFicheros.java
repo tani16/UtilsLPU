@@ -30,10 +30,10 @@ public class TratamientoFicheros {
 		
 		String file;
 		
-		if (("PRE").equals(tipo)) {
-			file = Constantes.FILE_LANZADOR_DESA;
+		if (("DESA").equals(tipo)) {
+			file = Constantes.FILE_TEMPLATE_DESA;
 		}else {
-			file = Constantes.FILE_LANZADOR_PRE;
+			file = Constantes.FILE_TEMPLATE_PRE;
 		}
 				
 		return openReaderFile(file);
@@ -128,6 +128,28 @@ public class TratamientoFicheros {
 		return archivo;
 	}
 	
+	public static ArrayList<String> getDisplaysFormatted(String file) throws ExceptionLPU {
+		
+		ArrayList<String> displays = new ArrayList<String>();
+		String linea;
+		BufferedReader reader = openReaderFile(file);
+		
+		try {
+			linea = reader.readLine();
+			reader.close();
+		} catch (IOException e) {
+			throw new ExceptionLPU(Constantes.ERROR, "Se ha producido un error al leer el fichero [" + file + "]", "E");
+		}
+		
+		String[] aux = linea.split(Constantes.SPLIT_TEST_KEY);
+		
+		for (String displayTest : aux) {
+			displays.add(displayTest);
+		}
+		
+		return displays;
+	}
+	
 	public static void moveDll(String modulo, String tipo) throws ExceptionLPU {
 		Path origenPath;
 		if("Before".equals(tipo)) {
@@ -138,9 +160,18 @@ public class TratamientoFicheros {
 		Path destinoPath = FileSystems.getDefault().getPath(Constantes.RUTA_BIN + modulo + ".dll");
 		
 		try {
-			Files.move(origenPath, destinoPath, StandardCopyOption.REPLACE_EXISTING);
+			Files.copy(origenPath, destinoPath, StandardCopyOption.REPLACE_EXISTING);
 		}catch (Exception e) {
 			throw new ExceptionLPU(Constantes.ERROR, "Se ha producido un error al mover el archivo dll de origen a la carpeta temporal", "E");
+		}
+	}
+	
+	public static void moveFile(Path origen, Path destino) throws ExceptionLPU {
+	
+		try {
+			Files.copy(origen, destino, StandardCopyOption.REPLACE_EXISTING);
+		}catch (Exception e) {
+			throw new ExceptionLPU(Constantes.ERROR, "Se ha producido un error al mover el archivo [" + origen.getFileName() + "]", "E");
 		}
 	}
 
@@ -153,5 +184,31 @@ public class TratamientoFicheros {
 			throw new ExceptionLPU(Constantes.ERROR, "Se ha producido un error al cerrar el fichero", "E");
 		}
 	}
+	
+	public static void deteleFile(Path file) throws ExceptionLPU {
+		
+		try {
+			Files.delete(file);
+		} catch (IOException e) {
+			throw new ExceptionLPU(Constantes.ERROR, "Se ha producido un error al eliminar el archivo de después de la carpeta temporal", "E");
+		}
+	}
+
+
+	public static void openNotepad() throws ExceptionLPU {
+		
+		ProcessBuilder pb = new ProcessBuilder(Constantes.FILE_NOTEPAD, Constantes.FILE_RESULT_AFTER, Constantes.FILE_RESULT_BEFORE);
+		try {
+			pb.start();
+		} catch (IOException e) {
+			throw new ExceptionLPU(Constantes.ERROR, "Se ha producido un error al abrir el Notepad", "E");
+		}
+		
+	}
+	
+	
+	
+	
+	
 	
 }
