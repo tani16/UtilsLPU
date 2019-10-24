@@ -1,11 +1,7 @@
 package com.catalana.utils;
 
-
-import java.awt.Dimension;
-import java.awt.Font;
-
 import javax.swing.JOptionPane;
-import javax.swing.UIManager;
+
 
 public class ExceptionLPU extends Exception {
 	

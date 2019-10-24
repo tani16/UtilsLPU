@@ -1,7 +1,6 @@
 package com.catalana.utils;
 
 
-import java.awt.Container;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -13,7 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.List;
 
 public class TratamientoFicheros {
 
@@ -26,9 +24,9 @@ public class TratamientoFicheros {
 	 * 
 	 * @param tipo - Indica si se realizará la prueba en Preproducción o en Desarrollo
 	 * @return BuffereReader, listo para ir leyendo línea a línea.
-	 * @throws FileNotFoundException
+	 * @throws ExceptionLPU 
 	 */
-	public static BufferedReader openTemplateLanzador (String tipo) throws FileNotFoundException {
+	public static BufferedReader openTemplateLanzador (String tipo) throws ExceptionLPU {
 		
 		String file;
 		
@@ -46,9 +44,9 @@ public class TratamientoFicheros {
 	 * 
 	 * @param tipo - Indica si se realizará la prueba en Preproducción o en Desarrollo
 	 * @return BufferedWriter listo para ser escrito linea a linea
-	 * @throws Exception
+	 * @throws ExceptionLPU
 	 */
-	public static BufferedWriter createLanzador(String tipo) throws Exception {
+	public static BufferedWriter createLanzador(String tipo) throws ExceptionLPU {
 		
 		BufferedWriter lanzador;
 		FileWriter fileWriter;
@@ -58,8 +56,8 @@ public class TratamientoFicheros {
 		try {
 			fileWriter = new FileWriter(Constantes.RUTA_TEMPORAL + fileName);
 			lanzador = new BufferedWriter(fileWriter);
-		}catch (Exception e) {
-			throw new Exception();
+		}catch (IOException e) {
+			throw new ExceptionLPU(Constantes.ERROR, "Error al crear el archivo lanzador con las pruebas unitarias", "E");
 		}
 		
 		return lanzador;
@@ -70,9 +68,9 @@ public class TratamientoFicheros {
 	 * 
 	 * @param file - Ruta + nombre del fichero a abrir para leer
 	 * @return BuffereReader, listo para ir leyendo línea a línea.
-	 * @throws FileNotFoundException
+	 * @throws ExceptionLPU 
 	 */
-	public static BufferedReader openReaderFile(String file) throws FileNotFoundException {
+	public static BufferedReader openReaderFile(String file) throws ExceptionLPU {
 		
 		FileReader fileReader;
 		BufferedReader bufferReader; 
@@ -81,14 +79,15 @@ public class TratamientoFicheros {
 			fileReader = new FileReader(file);
 			bufferReader = new BufferedReader(fileReader);
 		}catch (FileNotFoundException e) {
-			throw new FileNotFoundException();
+			throw new ExceptionLPU(Constantes.ERROR, "Fichero [" + file + "] no encontrado", "E");
 		}
 				
 		return bufferReader;
 		
 	}
 	
-	public static ArrayList<String> getArrayFromFile(String file) throws FileNotFoundException {
+	
+	public static ArrayList<String> getArrayFromFile(String file) throws ExceptionLPU {
 		
 		ArrayList<String> archivo = new ArrayList<String>();
 		String linea;
@@ -102,15 +101,19 @@ public class TratamientoFicheros {
 			}
 			reader.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ExceptionLPU(Constantes.ERROR, "Se ha producido un error al leer el fichero [" + file + "]", "E");
 		}
 		
 		return archivo;
 	}
 	
-	public static void moveDllAfter(String modulo) throws ExceptionLPU {
-		Path origenPath = FileSystems.getDefault().getPath(Constantes.RUTA_ORIGEN + modulo + "\\" + modulo + ".CBL");
+	public static void moveDll(String modulo, String tipo) throws ExceptionLPU {
+		Path origenPath;
+		if("After".equals(tipo)) {
+			origenPath = FileSystems.getDefault().getPath(Constantes.RUTA_ORIGEN + modulo + "\\" + modulo + ".CBL");
+		}else {
+			origenPath = FileSystems.getDefault().getPath(Constantes.RUTA_MODIFICADO + modulo + "\\" + modulo + ".CBL");
+		}
 		Path destinoPath = FileSystems.getDefault().getPath(Constantes.RUTA_BIN + modulo + ".CBL");
 		
 		try {
