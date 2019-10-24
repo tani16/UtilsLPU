@@ -9,9 +9,9 @@ public class Constantes {
 	public static final String FILE_LANZADOR_DESA 	= "C:\\PruebasUnitarias\\Temporal\\plantillaDesa.cbl";
 	public static final String FILE_LANZADOR_PRE  	= "C:\\PruebasUnitarias\\Temporal\\plantillaPRE.cbl";
 	public static final String FILE_RAWDATA	   		= "C:\\PruebasUnitarias\\Temporal\\rawData.txt";
-	public static final String FILE_SYSOUT	= "C:\\PruebasUnitarias\\SYSOUT"; 
-	public static final String FILE_BEFORE  = "C:\\PruebasUnitarias\\Temporal\\Before";
-	public static final String FILE_AFTER   = "C:\\PruebasUnitarias\\Temporal\\After";
+	public static final String FILE_SYSOUT			= "C:\\PruebasUnitarias\\SYSOUT"; 
+	public static final String FILE_TEST_BEFORE  	= "C:\\PruebasUnitarias\\Temporal\\Before.txt";
+	public static final String FILE_TEST_AFTER   	= "C:\\PruebasUnitarias\\Temporal\\After.txt";
 	
 	//Rutas
 	public static final String RUTA_TEMPORAL      	= "C:\\PruebasUnitarias\\Temporal\\";

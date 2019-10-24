@@ -109,12 +109,12 @@ public class TratamientoFicheros {
 	
 	public static void moveDll(String modulo, String tipo) throws ExceptionLPU {
 		Path origenPath;
-		if("After".equals(tipo)) {
-			origenPath = FileSystems.getDefault().getPath(Constantes.RUTA_ORIGEN + modulo + "\\" + modulo + ".CBL");
+		if("Before".equals(tipo)) {
+			origenPath = FileSystems.getDefault().getPath(Constantes.RUTA_ORIGEN + modulo + "\\obj\\x64\\Debug\\" + modulo + ".dll");
 		}else {
-			origenPath = FileSystems.getDefault().getPath(Constantes.RUTA_MODIFICADO + modulo + "\\" + modulo + ".CBL");
+			origenPath = FileSystems.getDefault().getPath(Constantes.RUTA_MODIFICADO + modulo + "\\obj\\x64\\Debug\\" + modulo + ".dll");
 		}
-		Path destinoPath = FileSystems.getDefault().getPath(Constantes.RUTA_BIN + modulo + ".CBL");
+		Path destinoPath = FileSystems.getDefault().getPath(Constantes.RUTA_BIN + modulo + ".dll");
 		
 		try {
 			Files.move(origenPath, destinoPath, StandardCopyOption.REPLACE_EXISTING);
