@@ -28,14 +28,9 @@ public class Constantes {
 	public static final String RUTA_BIN				= "C:\\COBOL\\bin\\";
 	
 	//Espacios
-<<<<<<< HEAD
-	public static final String SPACES_11 = "           ";
-	public static final String SPACES_15 = "               ";
-	public static final String SPACES_31 = "                               ";
-=======
 	public static final String SPACES_11 			= "           ";
 	public static final String SPACES_15 			= "               ";
->>>>>>> branch 'master' of https://github.com/tani16/UtilsLPU
+	public static final String SPACES_31 = "                               ";
 	
 	//Constantes Cobol
 	public static final String FINAL_PRE 			= "       END PROGRAM LANZAPRE.";
