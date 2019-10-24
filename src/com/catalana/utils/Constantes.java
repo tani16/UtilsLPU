@@ -23,6 +23,7 @@ public class Constantes {
 	//Espacios
 	public static final String SPACES_11 = "           ";
 	public static final String SPACES_15 = "               ";
+	public static final String SPACES_31 = "                               ";
 	
 	//Constantes Cobol
 	public static final String FINAL_PRE = "       END PROGRAM LANZAPRE.";
