@@ -31,5 +31,5 @@ public class Constantes {
 
 	//Literales
 	public static final String ERROR = "Error";
-	
+	public static final String NEW_TEST_COMMENT = "      * ---------- NUEVO TEST -------------*";
 }

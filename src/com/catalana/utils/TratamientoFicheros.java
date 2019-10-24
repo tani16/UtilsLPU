@@ -50,7 +50,7 @@ public class TratamientoFicheros {
 		
 		BufferedWriter lanzador;
 		FileWriter fileWriter;
-		String fileName = ("PRE").equals(tipo) ? "LANZADOR.cbl" : "LANZ_PRE.cbl";
+		String fileName = ("DESA").equals(tipo) ? "LANZADOR.cbl" : "LANZ_PRE.cbl";
 		
 		
 		try {
@@ -120,6 +120,16 @@ public class TratamientoFicheros {
 			Files.move(origenPath, destinoPath, StandardCopyOption.REPLACE_EXISTING);
 		}catch (Exception e) {
 			throw new ExceptionLPU(Constantes.ERROR, "Se ha producido un error al mover el archivo dll de origen a la carpeta temporal", "E");
+		}
+	}
+
+
+	public static void bwClose(BufferedWriter lanzador) throws ExceptionLPU {
+
+		try {
+			lanzador.close();
+		} catch (IOException e) {
+			throw new ExceptionLPU(Constantes.ERROR, "Se ha producido un error al cerrar el fichero", "E");
 		}
 	}
 	
