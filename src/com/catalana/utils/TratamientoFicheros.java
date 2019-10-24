@@ -65,6 +65,27 @@ public class TratamientoFicheros {
 	}
 	
 	/**
+	 *  
+	 * @param file
+	 * @return BufferedWriter listo para escribir en fichero
+	 * @throws ExceptionLPU
+	 */
+	public static BufferedWriter openWriterFile(String file) throws ExceptionLPU {
+
+		BufferedWriter writer;
+		FileWriter fileWriter;
+		try {
+			fileWriter = new FileWriter(file);
+			writer = new BufferedWriter(fileWriter);
+		} catch (IOException e) {
+			throw new ExceptionLPU(Constantes.ERROR, "Error al leer el archivo " + file, "E");
+		}
+
+		return writer;
+
+	}
+	
+	/**
 	 * 
 	 * @param file - Ruta + nombre del fichero a abrir para leer
 	 * @return BuffereReader, listo para ir leyendo línea a línea.
