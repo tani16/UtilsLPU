@@ -3,6 +3,7 @@ package com.catalana.utils;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -65,19 +66,21 @@ public class TratamientoFicheros {
 	}
 	
 	/**
-	 *  
-	 * @param file
-	 * @return BufferedWriter listo para escribir en fichero
+	 * 
+	 * @param file ruta de la fila
+	 * @param append si es true escribe al final del archivo en vez de sobreescribir
+	 * @return
 	 * @throws ExceptionLPU
 	 */
-	public static BufferedWriter openWriterFile(String file) throws ExceptionLPU {
+	public static BufferedWriter openWriterFile(String file, boolean append) throws ExceptionLPU {
 
+		File filAux = new File(file);
 		BufferedWriter writer;
 		FileWriter fileWriter;
 		try {
-			fileWriter = new FileWriter(file);
+			fileWriter = new FileWriter(file, append);
 			writer = new BufferedWriter(fileWriter);
-		} catch (IOException e) {
+		} catch (Exception e) {
 			throw new ExceptionLPU(Constantes.ERROR, "Error al leer el archivo " + file, "E");
 		}
 
