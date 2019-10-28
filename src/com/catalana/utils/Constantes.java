@@ -31,6 +31,7 @@ public class Constantes {
 	public static final String SPACES_7 			= "       ";
 	public static final String SPACES_11 			= "           ";
 	public static final String SPACES_15 			= "               ";
+	public static final String SPACES_18			= "                  ";
 	public static final String SPACES_31 			= "                               ";
 	
 	//Constantes Cobol

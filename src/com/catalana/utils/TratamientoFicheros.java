@@ -156,7 +156,7 @@ public class TratamientoFicheros {
 	public static void moveDll(String modulo, String tipo) throws ExceptionLPU {
 		Path origenPath;
 		if("Before".equals(tipo)) {
-			origenPath = FileSystems.getDefault().getPath(Constantes.RUTA_ORIGEN + modulo + "\\obj\\x64\\Debug\\" + modulo + ".dll");
+			origenPath = FileSystems.getDefault().getPath(Constantes.RUTA_ORIGEN + modulo + "\\obj\\x64\\Debug\\" + modulo + ".dll");    
 		}else {
 			origenPath = FileSystems.getDefault().getPath(Constantes.RUTA_MODIFICADO + modulo + "\\obj\\x64\\Debug\\" + modulo + ".dll");
 		}
@@ -190,10 +190,11 @@ public class TratamientoFicheros {
 	
 	public static void deteleFile(Path file) throws ExceptionLPU {
 		
+		
 		try {
-			Files.delete(file);
+			Files.deleteIfExists(file);
 		} catch (IOException e) {
-			throw new ExceptionLPU(Constantes.ERROR, "Se ha producido un error al eliminar el archivo de después de la carpeta temporal", "E");
+			throw new ExceptionLPU(Constantes.ERROR, "Se ha producido un error al eliminar el archivo de la carpeta temporal", "E");
 		}
 	}
 
