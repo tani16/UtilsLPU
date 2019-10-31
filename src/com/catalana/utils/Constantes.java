@@ -19,7 +19,7 @@ public class Constantes {
 	public static final String FILE_RESULT_AFTER    = "C:\\PruebasUnitarias\\Temporal\\ResultAfter.txt";
 	public static final String FILE_RESULT_BEFORE   = "C:\\PruebasUnitarias\\Temporal\\ResultBefore.txt";
 	public static final String FILE_NOTEPAD         = "C:\\Program Files (x86)\\Notepad++\\notepad++.exe";
-
+	
 	//Rutas
 	public static final String RUTA_TEMPORAL      	= "C:\\PruebasUnitarias\\Temporal\\";
 	public static final String RUTA_ORIGEN        	= "C:\\COBOL\\Origen\\";
