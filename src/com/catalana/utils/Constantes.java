@@ -42,6 +42,7 @@ public class Constantes {
 	public static final String DISPLAY_TEST     	= "           DISPLAY '#LPU - NEW TEST CASE'.";
 	public static final String COPY_GENRETSP        = "       COPY GENRETSP.";
 	public static final String COPY_GENRETOR        = "       COPY GENRETOR.";
+	public static final String ROLLBACK				= "           EXEC SQL ROLLBACK END-EXEC.";
 
 
 	//Literales
