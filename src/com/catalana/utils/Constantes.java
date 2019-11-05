@@ -39,7 +39,8 @@ public class Constantes {
 	public static final String FINAL_DESA			= "       END PROGRAM LANZADOR";
 	public static final String GOBACK 				= "           GOBACK.";
 	public static final String NEW_TEST_COMMENT 	= "      * ---------- NUEVO TEST -------------*";
-	public static final String DISPLAY_TEST     	= "           DISPLAY '#LPU - NEW TEST CASE'.";
+	public static final String DISPLAY_NEW_TEST    	= "           DISPLAY '#LPU - NEW TEST CASE'.";
+	public static final String DISPLAY_N_TEST    	= "           DISPLAY '#Caso de prueba ";
 	public static final String COPY_GENRETSP        = "       COPY GENRETSP.";
 	public static final String COPY_GENRETOR        = "       COPY GENRETOR.";
 	public static final String ROLLBACK				= "           EXEC SQL ROLLBACK END-EXEC.";
